@@ -1,0 +1,387 @@
+:root {
+  --bg-a: #cdf5ea;
+  --bg-b: #e6f8ff;
+  --card: #ffffff;
+  --blush: #e1f8f1;
+  --peach: #ffcc33;
+  --mint: #00c2a8;
+  --forest: #009fbd;
+  --violet-1: #00d1b2;
+  --violet-2: #0092b8;
+  --gold: #ff5c7a;
+  --ink: #123247;
+  --muted: #6e93a0;
+  --danger: #ff5c5c;
+  --danger-bg: #ffe7e7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--bg-a) 0%, var(--bg-b) 100%);
+  font-family: "Quicksand", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--ink);
+  padding: 56px 20px;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  background: var(--card);
+  border-radius: 26px;
+  padding: 30px 32px 34px;
+  box-shadow: 0 26px 50px -22px rgba(63, 102, 89, 0.28);
+  overflow: hidden;
+}
+
+/* Jewel-flower corner doodles */
+.doodle {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  opacity: 0.9;
+}
+
+.doodle-tl {
+  top: -10px;
+  right: -10px;
+}
+
+.doodle-br {
+  bottom: -12px;
+  left: -12px;
+  width: 46px;
+  height: 46px;
+}
+
+/* Jewel-tone tape strip */
+.tape-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.tape {
+  height: 16px;
+  border-radius: 3px;
+  opacity: 0.9;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.55) 0px,
+    rgba(255, 255, 255, 0.55) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+.tape-1 {
+  width: 46px;
+  background-color: var(--peach);
+  transform: rotate(-4deg);
+}
+
+.tape-2 {
+  width: 60px;
+  background-color: var(--mint);
+  transform: rotate(2deg);
+}
+
+.tape-3 {
+  width: 38px;
+  background-color: var(--gold);
+  transform: rotate(-2deg);
+}
+
+/* Header */
+.card-head {
+  position: relative;
+  z-index: 1;
+}
+
+.card-head h1 {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 1;
+  margin: 4px 0 0;
+  color: var(--ink);
+}
+
+.squiggle {
+  display: block;
+  width: 150px;
+  height: 14px;
+  margin: 2px 0 8px 2px;
+}
+
+.card-head .sub {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* Progress */
+.progress-block {
+  margin-top: 22px;
+  position: relative;
+  z-index: 1;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+#progressCount {
+  color: var(--ink);
+}
+
+#progressPercent {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.progress-track {
+  height: 13px;
+  background: var(--blush);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--peach), var(--mint));
+  transition: width 0.4s cubic-bezier(0.34, 1.2, 0.4, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-fill {
+    transition: none;
+  }
+}
+
+/* Add row */
+.add-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+  background: var(--blush);
+  border-radius: 14px;
+  padding: 5px 6px 5px 14px;
+}
+
+.pin {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+#taskInput {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  padding: 10px 4px;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+#taskInput::placeholder {
+  color: var(--muted);
+}
+
+#taskInput:focus {
+  outline: none;
+}
+
+.add-row button {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--violet-1), var(--violet-2));
+  cursor: pointer;
+  box-shadow: 0 8px 16px -6px rgba(0, 146, 184, 0.4);
+  transition: transform 0.12s ease;
+}
+
+.add-row button:hover {
+  transform: translateY(-1px);
+}
+
+.add-row button:focus-visible,
+.task-check:focus-visible,
+.task-delete:focus-visible,
+#taskInput:focus-visible {
+  outline: 2px solid var(--violet-2);
+  outline-offset: 2px;
+}
+
+/* Task list — blank-line checklist */
+.task-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 2px;
+  border-bottom: 2px dashed var(--blush);
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+.task-check {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border: 2.5px solid var(--violet-2);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+.task-item.done .task-check {
+  background: linear-gradient(135deg, var(--violet-1), var(--violet-2));
+  border-color: transparent;
+}
+
+.task-item.done .task-check::after {
+  content: "\2713";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.task-name {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.task-item.done .task-name {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--muted);
+  text-decoration-thickness: 2px;
+}
+
+.task-delete {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.4;
+  transition: background 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+}
+
+.task-item:hover .task-delete,
+.task-delete:focus-visible {
+  opacity: 1;
+}
+
+.task-delete:hover {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 14px;
+  margin: 26px 0 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.notice {
+  margin-top: 18px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  color: var(--muted);
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+}
+
+.notice code {
+  background: var(--blush);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 12px;
+}
+
+.notice.error {
+  color: var(--danger);
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 26px 22px 28px;
+  }
+
+  .doodle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .doodle-br {
+    width: 34px;
+    height: 34px;
+  }
+
+  .card-head h1 {
+    font-size: 38px;
+  }
+}
